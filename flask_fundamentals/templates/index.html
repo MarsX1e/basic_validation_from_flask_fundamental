@@ -8,8 +8,28 @@
 </head>
 <body>
     <h1>Enter a Valid(any) Name!</h1>
+    {%with messages=get_flashed_messages()%}
+        {%if messages %}
+            {%for message in messages %}
+            <!-- for loop for massage, but why? Can't we just put the string there? Does it loop letter by letter? -->
+                <p>{{message}}</p>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
     <form action='/process' method='POST'>
         Name:<input type="text" name="name">
+        <input type="submit" value="Submit">
+    </form>
+    <h1>Enter a Valid(Any) Email!</h1>
+    {%with messages = get_flashed_messages()%}
+        {%if messages %}
+            {%for message in messages%}
+                {{message}}
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <form action='/process' method='POST'>
+        Email:<input type="text" name="email">
         <input type="submit" value="Submit">
     </form>
 </body>
